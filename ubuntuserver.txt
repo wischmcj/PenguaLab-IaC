@@ -1,5 +1,0 @@
-#packages 
-##docker as non root - https://docs.docker.com/engine/security/rootless/#prerequisites
-uidmap 
-dbus-user-session
-ssh-askpass
