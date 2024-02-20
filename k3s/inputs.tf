@@ -15,3 +15,11 @@ variable "k3s" {
   })
   default = {}
 }
+
+# variable "TF_VAR_admin_username" {
+#     type = string
+# }
+
+# variable "TF_VAR_admin_password" {
+#     type = string
+# }
