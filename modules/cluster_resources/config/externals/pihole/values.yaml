@@ -1,4 +1,4 @@
-
+# Default values for pihole.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -18,9 +18,9 @@ image:
   # -- the repostory to pull the image from
   repository: "pihole/pihole"
   # -- the docker tag, if left empty it will get it from the chart's appVersion
-  tag: ""
+  tag: "2024.02.0"
   # -- the pull policy
-  pullPolicy: IfNotPresent
+  pullPolicy: Never
 
 dualStack:
   # -- set this to true to enable creation of DualStack services or creation of separate IPv6 services if `serviceDns.type` is set to `"LoadBalancer"`
@@ -142,15 +142,14 @@ virtualHost: pi.hole
 # -- Configuration for the Ingress
 ingress:
   # -- Generate a Ingress resource
-  enabled: true
+  enabled: false
 
   # -- Specify an ingressClassName
-  ingressClassName: nginx
+  # ingressClassName: nginx
 
   # -- Annotations for the ingress
   annotations: {}
     # kubernetes.io/ingress.class: nginx
-  
     # kubernetes.io/tls-acme: "true"
   path: /
   hosts:
@@ -182,6 +181,7 @@ probes:
     timeoutSeconds: 5
     port: http
     scheme: HTTP
+    
   readiness:
     # -- Generate a readiness probe
     enabled: true
@@ -288,7 +288,7 @@ extraEnvVarsSecret: {}
 # -- default upstream DNS 1 server to use
 DNS1: "8.8.8.8"
 # -- default upstream DNS 2 server to use
-DNS2: "8.8.4.4"
+DNS2: "127.0.0.1"
 
 antiaff:
   # -- set to true to enable antiaffinity (example: 2 pihole DNS in the same cluster)
@@ -303,7 +303,7 @@ antiaff:
 
 doh:
   # -- set to true to enabled DNS over HTTPs via cloudflared
-  enabled: true
+  enabled: false
   # -- name
   name: "cloudflared"
   # -- repository
@@ -312,9 +312,7 @@ doh:
   # -- Pull policy
   pullPolicy: IfNotPresent
   # -- Here you can pass environment variables to the DoH container, for example:
-  envVars: {
-    DOH_UPSTREAM: "https://1.1.1.1/dns-query"
-  }
+  envVars: {}
     # TUNNEL_DNS_UPSTREAM: "https://1.1.1.2/dns-query,https://1.0.0.2/dns-query"
 
   # -- Probes configuration
@@ -539,10 +537,14 @@ monitoring:
 
 podDnsConfig:
   enabled: true
-  policy: "None"
+  # policy: "None"
+  # nameservers:
+  #   - 127.0.0.1
+  #   - 8.8.8.8
+  policy: "ClusterFirstWithHostNet"
   nameservers:
     - 127.0.0.1
-    - 8.8.8.8
+    - 208.67.222.222 # OpenDNS public nameserver
 
 # -- configure a Pod Disruption Budget
 podDisruptionBudget:

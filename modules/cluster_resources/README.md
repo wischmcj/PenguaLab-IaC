@@ -16,6 +16,6 @@ $ pwd
 homelab/molecules/k3s
 
 $ terraform output -json | jq -r '.kubeconfig.value."127.0.0.1"' > ../../config/127.0.0.1.kubeconfig
-```
+```terraform output -json | jq -r '.kubeconfig.value."192.168.0.157"' > ../../config/192.168.0.157.kubeconfig
 
 This can be done by copying the your public ssh key-pair into the `~/.ssh/authorized_keys` file on the server.

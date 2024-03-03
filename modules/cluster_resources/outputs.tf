@@ -14,3 +14,7 @@ output "ingresses" {
   description = "Applications exposed with nginx-ingress"
   value = [for ingress in helm_release.external_ingresses : ingress.name ]
 }
+
+# output "rancher_agent_command" {
+#   value = "${rancher_registration_token.demo-token.command}"
+# }

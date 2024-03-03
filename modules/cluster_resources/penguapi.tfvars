@@ -1,7 +1,7 @@
 cluster = {
   name = "default"
   config_path = "../../config/192.168.0.94.kubeconfig"
-  host = "https://192.168.0.94:6443"
+  host = "https://192.168.0.94"
   hosts = [
     "192.168.0.94.nip.io",
     "pi.lol"
@@ -55,16 +55,16 @@ externals = [
     #    version = "3.3.6"
     #    namespace = "homelab"
     #  },
-    # {
-    #   name = "coredns",
-    #   repo = "https://coredns.github.io/helm",
-    #   version = "1.19.7",
-    #   namespace = "homelab"
-    # }
+    {
+      name = "coredns",
+      repo = "https://coredns.github.io/helm",
+      version = "1.19.7",
+      namespace = "homelab"
+    },
     {
       name = "pihole",
       repo = "https://mojo2600.github.io/pihole-kubernetes/",
-      version = "2.11.0",
+      # version = "2.11.0",
       namespace = "homelab"
     },
     # {
@@ -79,18 +79,18 @@ externals = [
     # version = "19.3.1",
     # namespace = "homelab"
     #},
-   # {
-    #  name = "grafana",
-     # repo = "https://grafana.github.io/helm-charts",
-      #version = "0.2.3",
-     # namespace = "homelab"
-    #},
-    # {
-    #   name = "loki",
-    #   repo = "https://grafana.github.io/loki/charts",
-    #   version = "2.1.1",
-    #   namespace = "homelab"
-    # },
+   {
+     name = "grafana",
+     repo = "https://grafana.github.io/helm-charts",
+      version = "0.2.3",
+     namespace = "homelab"
+    },
+    {
+      name = "loki",
+      repo = "https://grafana.github.io/loki/charts",
+      version = "2.1.1",
+      namespace = "homelab"
+    },
     # https://grafana.com/blog/2022/06/23/how-to-send-logs-to-grafana-loki-with-the-opentelemetry-collector-using-fluent-forward-and-filelog-receivers
     # {
     #   name = "opentelemetry-collector",
@@ -139,12 +139,12 @@ externals = [
   #   version = "4.4.4",
   #   namespace = "homelab"
   # },
-  # {
-  #   name = "minio",
-  #   repo = "https://charts.min.io/",
-  #   version = "5.0.14",
-  #   namespace = "homelab"
-  # },
+  {
+    name = "minio",
+    repo = "https://charts.min.io/",
+    version = "5.0.14",
+    namespace = "homelab"
+  },
   # {
   #   name = "argo-cd",
   #   repo = "https://argoproj.github.io/argo-helm",

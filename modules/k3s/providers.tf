@@ -18,18 +18,15 @@ terraform {
     }
   }
 
-  # backend "http" {
-  #   # address = "http://localhost:6061/?type=git&repository=https://github.com/wischmcj/tf-state&ref=master&state=my/state.json"
-  #   # lock_address = "http://localhost:6061/?type=git&repository=https://github.com/wischmcj/tf-state&ref=master&state=my/state.json"
-  #   # unlock_address = "http://localhost:6061/?type=git&repository=https://github.com/wischmcj/tf-state&ref=master&state=my/state.json"
-  #   address = "http://localhost:6061/?type=git&repository=https://github.com/wischmcj/tf-state&ref=master&state=my/state.json"
-  #   lock_address = "http://localhost:6061/?type=git&repository=https://github.com/wischmcj/tf-state&ref=master&state=my/state.json"
-  #   unlock_address = "http://localhost:6061/?type=git&repository=https://github.com/wischmcj/tf-state&ref=master&state=my/state.json"
-  #   username="wischmcj"
-  #   password="Gamma@13"
-  # }
 }
 
 provider "ssh" {}
 provider "time" {}
 provider "remote" {}
+
+# provider "docker" {
+#   # host = "unix:///run/user/1000/docker.sock"
+#   host     = "ssh://wischmcj@192.168.0.94:22"
+#   ssh_opts = ["-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null"]
+
+# }

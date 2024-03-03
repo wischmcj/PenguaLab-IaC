@@ -11,3 +11,9 @@ data "remote_file" "kubeconfig" {
     ssh_resource.install_k3s
   ]
 }
+
+# resource "local_file" "kubeconfig" {
+#   for_each = local.servers
+#   content  = data.remote_file.kubeconfig[each.key].content
+#   filename = "${path.module}/kubeconfig/${each.value.name}"
+# }

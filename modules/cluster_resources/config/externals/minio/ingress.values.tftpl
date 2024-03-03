@@ -1,0 +1,20 @@
+flags:
+  rewrite: false
+
+service:
+  name: minio-console
+  port:
+    number: 9001
+
+annotations:
+  hajimari.io/enable: "true"
+  hajimari.io/appName: "minio"
+
+ingress:
+  subdomain: minio
+  routePath: /
+
+hosts:
+%{ for host in hosts ~}
+- name: ${host}
+%{ endfor ~}
