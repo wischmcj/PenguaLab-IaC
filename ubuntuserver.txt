@@ -1,0 +1,10 @@
+#packages 
+##docker as non root - https://docs.docker.com/engine/security/rootless/#prerequisites
+uidmap 
+dbus-user-session
+ssh-askpass
+
+libpam-ssh-agent
+only add one config line, as requested
+ssh-add added to zsh rather than bash
+d
