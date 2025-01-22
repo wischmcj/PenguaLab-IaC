@@ -6,4 +6,6 @@ Features:
   - Docker non-root user config - needed to avoid giving root privileges to terraform user
   - lib-pam-ssh - facilitates limited passwordless sudo commands via ssh
 - Ansible: not much now, other than configuring the lan
-- 
+- Terraform:
+  - main.tf - creates mariadb (mySql) in instance on each cluster, configures nginx as load balancer, snippets for general docker image deployment
+  - variables.tf - notably: mySql creds, volumes on each node
