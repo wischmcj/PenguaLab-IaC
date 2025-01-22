@@ -1,7 +1,6 @@
 A minimal template (perhaps even skeleton) for configuration of cluster nodes within a local network.
 
-Features:
-- Snippets for deploying docker containers to nodes
+Everthing outside of '/modules': Snippets for deploying docker containers to nodes
 - Ubuntuserver: minimal bash commands for node server configuration
   - Docker non-root user config - needed to avoid giving root privileges to terraform user
   - lib-pam-ssh - facilitates limited passwordless sudo commands via ssh
@@ -9,3 +8,6 @@ Features:
 - Terraform:
   - main.tf - creates mariadb (mySql) in instance on each cluster, configures nginx as load balancer, snippets for general docker image deployment
   - variables.tf - notably: mySql creds, volumes on each node
+
+Modules: Creates K3s cluster managed by Rancher
+- Notable programs: PiHole DNS, 
