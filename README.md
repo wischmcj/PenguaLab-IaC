@@ -6,7 +6,9 @@ Used to configure nodes for and deploy apps to within my 'Homelab' (various appl
 Hardware:
 
 PenguaPi - RasberryPi 4B (ARM)
+
 PenguaLibre - LibrePi Le Potato (x64)
+
 PenguaSaur - Lenovo Y70 (x64) 
 
 Software: 
