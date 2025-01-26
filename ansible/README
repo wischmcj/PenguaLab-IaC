@@ -1,0 +1,24 @@
+
+This is a currently incomplete set of ansible playbooks for the configuration of permissions 
+needed for new nodes added to the cluster. Primarily, the configuration of a the ssh_auth_agent PAM module:
+https://wiki.gentoo.org/wiki/Pam_ssh_agent_auth
+
+The below is a description of the current, manual process to set up said PAM module 
+
+set env variable SUDO_AGENT
+
+add "auth [success=3 default=ignore] sufficient pam_ssh_auth_agent.so file=/etc>
+    to begining of /etc/pam.d/sudo
+add to /etc/sudoers
+ - 'Defaults env_keep += "SSH_AUTH_SOCK"'
+
+alter /etc/pam.d/ssh and sudo to allow for skipping other auth on ssh auth
+    - https://wiki.gentoo.org/wiki/Pam_ssh_agent_auth
+    - https://jpmens.net/2021/11/21/pam-ssh-agent-authentication-with-ansible/
+turn off password sign in in etc/ssh/ssh_config
+copy over ssh keys to both the .ssh/* files and to sud_authorized_keys
+
+***Add 'sudo -A' to the install command to allow for the agent to verify via SS>
+
+#Alter the permisssions for the config with the below
+sudo chown -R $(id -u):$(id -g) /etc/rancher/k3s/k3s.yaml
